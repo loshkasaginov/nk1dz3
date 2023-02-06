@@ -1,0 +1,51 @@
+#---- 1
+
+def unique_val(ids):
+    a=set()
+    for i in ids.values():
+        for j in i:
+            a.add(j)
+    print(a)
+ids = {'user1': [213, 213, 213, 15, 213],
+       'user2': [54, 54, 119, 119, 119],
+       'user3': [213, 98, 98, 35]}
+
+#---- 2
+
+def num_words(queries):
+    d={}
+    all=0
+    for i in queries:
+        num = len(i.split())
+        if num in d:
+            d[num] += 1
+        else:
+            d[num] = 1
+        all+=1
+    for key, value in d.items():
+        print(f'Поисковых запросов, содержащих {key} слов(а): {round(value/(all/100),2)}%')
+
+#---- 3
+
+def add_roi(results):
+    for company, di in results.items():
+        res = round((di['revenue']/di['cost']-1)*100, 2)
+        di.update({'ROI': res})
+    print(results)
+results = {
+    'vk': {'revenue': 103, 'cost': 98},
+    'yandex': {'revenue': 179, 'cost': 153},
+    'facebook': {'revenue': 103, 'cost': 110},
+    'adwords': {'revenue': 35, 'cost': 34},
+    'twitter': {'revenue': 11, 'cost': 24},
+}
+#add_roi(results)
+
+
+#---- 4
+
+def maxi(stats):
+    sorted_stats = sorted(stats.items(), key=lambda x: x[1])
+    print(f'Максимальный объем продаж на рекламном канале: {sorted_stats[-1][0]}')
+stats = {'facebook': 55, 'yandex': 115, 'vk': 120, 'google': 99, 'email': 42, 'ok': 98}
+maxi(stats)
